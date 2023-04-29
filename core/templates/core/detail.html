@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <!-- <h2>{{ items.name }}</h2><h5>{{ items.created_at }}</h5>
+    <h6>{{ items.description }}</h6> -->
+
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">主题</th>
+            <th scope="col">更新时间</th>
+            <th scope="col">文件类型</th>
+            <th scope="col">链接</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="table-primary">
+            <th scope="row">{{ items.name }}</th>
+            <td>{{ items.created_at }}</td>
+            <td>{{ items.doc_type }}</td>
+            <td><a href="{{ items.doc_link}}">打开</a></td>
+          </tr>
+        </tbody>
+
+    </table>
+
+    <div class="col-lg-3 col-md-6">
+        <article class="post-grid mb-5">
+            <a class="post-thumb mb-4 d-block" href="{% url 'detail' items.id %}">
+                
+                {% if items.image %}<img src="{{ items.image.url }}" alt="" class="img-fluid w-100">{% endif %}
+                
+            </a>
+            <h3 class="post-title mt-1 initialism">{{ items.description }}</h3>
+        </article>
+        <span>1 / 1</span>
+    </div>
+    
+
+</div>
+{% endblock %}
